@@ -10,7 +10,7 @@ class BaseModel:
         """ Instance Attribute """
         self.id = str(uuid4())
         self.created_at = datetime.now()
-        self.updated_at = datetime.now().isoformat()
+        self.updated_at = datetime.now()
 
     def __str__(self):
         """ Instances methods
@@ -19,11 +19,11 @@ class BaseModel:
             id
             dictionary
         """
-        return "[{}] ({}) {}".format(str(self.__class__.__name__),
+        return "[{}] ({}) {}".format(self.__class__.__name__,
                                      self.id, self.__dict__)
 
     def save(self):
-        """" Save: sve time update of date created an id """
+        """" Save: save time update of date created an id """
         self.updated_at = datetime.now()
 
     def to_dict(self):
