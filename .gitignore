@@ -1,2 +1,6 @@
 # Ignoring iterated files saved by buffer
 *~
+# Ignoring test files
+test_base_model.py
+# Ignoring __pycache__
+__pycache__
