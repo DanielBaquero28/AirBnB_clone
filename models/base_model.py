@@ -33,6 +33,6 @@ class BaseModel:
         """
         dict_to = dict(self.__dict__.items())
         dict_to.update({'__class__': self.__class__.__name__})
-        dict_to['created_at'] = self.created_at.isoformat()
-        dict_to['updated_at'] = self.updated_at.isoformat()
+        dict_to.update({'created_at': self.created_at.isoformat()})
+        dict_to.update({'updated_at': self.updated_at.isoformat()})
         return dict_to
