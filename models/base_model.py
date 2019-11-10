@@ -22,10 +22,10 @@ class BaseModel:
 
     def __str__(self):
         """ Returns the string representation of class name, id and dict """
-        class_name = str("[self.__class__.__name__]")
-        instance_id = str("(self.id)")
+        class_name = str("[" + self.__class__.__name__ + "]")
+        instance_id = str("(" + self.id + ")")
         instance_dict = str(self.__dict__)
-        return (" " + class_name + " " + instance_id + " " + instance_dict)
+        return (class_name + " " + instance_id + " " + instance_dict)
 
     def save(self):
         """

@@ -2,5 +2,6 @@
 *~
 # Ignoring test files
 test_base_model.py
+test_base_model_dict.py
 # Ignoring __pycache__
 __pycache__
