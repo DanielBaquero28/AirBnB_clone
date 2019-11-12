@@ -4,6 +4,7 @@ from uuid import uuid4
 from datetime import datetime
 import models
 
+
 class BaseModel:
     """ SuperClass from which the rest of the classes will inherit """
     def __init__(self, *args, **kwargs):
