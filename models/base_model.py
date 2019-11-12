@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 """ Imports """
+import json
 from uuid import uuid4
 from datetime import datetime
 
@@ -43,3 +44,28 @@ class BaseModel:
         dict_to.update({'created_at': self.created_at.isoformat()})
         dict_to.update({'updated_at': self.updated_at.isoformat()})
         return dict_to
+
+    @staticmethod
+    def to_json_string(list_dictionaries):
+        """ to json string """
+        if list_dictionaries:
+            return json.dumps(list_dictionaries)
+        else:
+            return "[]"
+
+    @classmethod
+    def save_to_file(cls, list_objs):
+        """ save to file """
+        objs = []
+        if list_objs:
+            for obj in list_objs:
+                objs.append(obj.to_dict())
+            with open(cls.__name__ + ".json", "w+") as f:
+                f.write(
+                    cls.to_json_string(objs))
+            f.close()
+        else:
+            with open(cls.__name__ + ".json", "w+") as f:
+                f.write(
+                    cls.to_json_string(objs))
+                f.close()
