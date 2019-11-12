@@ -1,18 +1,19 @@
 #!/usr/bin/python3
 """ Imports """
 import cmd
+import json
 from models.base_model import BaseModel
 
 
 class HBNBCommand(cmd.Cmd):
     """ Class HBNBCommand """
     prompt = "(hbnb) "
+    model_json = []
 
     def do_create(self, name):
         """Create a new instance"""
         if name == 'BaseModel':
-            self.my_model=BaseModel()
-            print("{}".format(self.my_model))
+            pass
         else:
             print("** class name missing **")
 
