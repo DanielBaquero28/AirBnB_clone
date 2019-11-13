@@ -2,8 +2,9 @@
 """ Imports """
 import cmd
 import json
-
 from models.base_model import BaseModel
+from models.engine.file_storage import FileStorage
+from models import storage
 from models.user import User
 from models.state import State
 from models.city import City
@@ -51,10 +52,24 @@ class HBNBCommand(cmd.Cmd):
         else:
             print("** class doesn't exist **")
 
-    def do_show(self, name):
+    def do_show(self, line):
         """Prints a instance based on the class name"""
-        if name:
-            pass
+        if line:
+            args = line.split(' ')
+            if args[0] in HBNBCommand.classes:
+                if len(args) == 1:
+                    print("** instance id missing **")
+                else:
+                    all_objs = storage.all()
+                    __obj = "{}.{}".format(args[0],args[1])
+                    if __obj in all_objs.keys():
+                        for obj_id in all_objs.keys():
+                            obj = all_objs[obj_id]
+                        print(obj)
+                    else:
+                        print("** no instance found **")
+            else:
+                print("** class doesn't exist **")
         else:
             print("** class name missing **")
 
