@@ -31,14 +31,26 @@ class HBNBCommand(cmd.Cmd):
         else:
             print("** class doesn't exist **")
 
-    def do_destroy(self, name):
+    def do_destroy(self, line):
         """Deletes an instance"""
-        if name:
-            pass
+        if line:
+            args = line.split(' ')
+            if args[0] in HBNBCommand.classes:
+                if len(args) == 1:
+                    print("** instance id missing **")
+                else:
+                    objs = storage.all()
+                    obj = "{}.{}".format(args[0], args[1])
+                    if obj in objs.keys():
+                        storage.delete(args[0], args[1])
+                    else:
+                        print("** no instance found **")
+            else:
+                print("** class doesn't exist **")
         else:
             print("** class name missing **")
 
-    def do_update(selfi, name):
+    def do_update(self, name):
         """Update a instance based on the class name"""
         if name:
             pass
@@ -60,12 +72,10 @@ class HBNBCommand(cmd.Cmd):
                 if len(args) == 1:
                     print("** instance id missing **")
                 else:
-                    all_objs = storage.all()
-                    __obj = "{}.{}".format(args[0], args[1])
-                    if __obj in all_objs.keys():
-                        for obj_id in all_objs.keys():
-                            obj = all_objs[obj_id]
-                        print(obj)
+                    objs = storage.all()
+                    obj = "{}.{}".format(args[0], args[1])
+                    if obj in objs.keys():
+                        print(objs[obj])
                     else:
                         print("** no instance found **")
             else:
