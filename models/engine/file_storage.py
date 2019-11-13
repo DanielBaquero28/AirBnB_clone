@@ -10,7 +10,7 @@ class FileStorage:
     Serializes instances to a JSON files and deserializes
     JSON files to instances
     """
-    __file_path = "file.json"
+    __file_path = 'file.json'
     __objects = {}
 
     def all(self):
@@ -19,8 +19,8 @@ class FileStorage:
 
     def new(self, obj):
         """ Sets in __objects the obj with key <obj class name>.id """
-        key = obj.__class__.__name__ + "." + obj.id
-        FileStorage.__objects[key] = obj
+
+        self.__objects[obj.__class__.__name__ + "." + obj.id] = obj
 
     def save(self):
         """ Serializes __objects to the JSON file """
