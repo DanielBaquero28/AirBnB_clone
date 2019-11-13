@@ -2,20 +2,33 @@
 """ Imports """
 import cmd
 import json
+
 from models.base_model import BaseModel
+from models.user import User
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.place import Place
+from models.review import Review
 
 
 class HBNBCommand(cmd.Cmd):
     """ Class HBNBCommand """
     prompt = "(hbnb) "
-    model_json = []
+    classes = {"BaseModel": BaseModel, "User": User, "State": State,
+               "City": City, "Amenity": Amenity, "Place": Place,
+               "Review": Review}
 
     def do_create(self, name):
         """Create a new instance"""
-        if name == 'BaseModel':
-            pass
-        else:
+        if name == '':
             print("** class name missing **")
+        elif name in HBNBCommand.classes:
+            Class = HBNBCommand.classes.get(name)()
+            Class.save()
+            print(Class.id)
+        else:
+            print("** class doesn't exist **")
 
     def do_destroy(self, name):
         """Deletes an instance"""
