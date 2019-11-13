@@ -1,8 +1,14 @@
 #!/usr/bin/python3
 """ Importing necessary modules """
-from models.base_model import BaseModel
 import json
+from models.base_model import BaseModel
 from os import path
+from ..user import User
+from ..state import State
+from ..city import City
+from ..amenity import Amenity
+from ..place import Place
+from ..review import Review
 
 
 class FileStorage:
@@ -39,5 +45,5 @@ class FileStorage:
                     class_name = element['__class__']
                     del element['__class__']
                     self.new(eval(class_name)(**element))
-        except:
+        except Exception:
             pass
