@@ -1,71 +1,46 @@
 #!/usr/bin/python3
-""" Imports """
-import json
+""" Importing necessary modules """
 from uuid import uuid4
 from datetime import datetime
+import models
 
 
 class BaseModel:
-    """ Class BaseModel """
+    """ SuperClass from which the rest of the classes will inherit """
     def __init__(self, *args, **kwargs):
-        """ Instance Attribute """
-        self.id = str(uuid4())
-        self.created_at = datetime.now()
-        self.updated_at = datetime.now()
-        if kwargs is not None:
+        """ Constructor method """
+        if kwargs:
             for key, value in kwargs.items():
+                if key == 'created_at' or key == 'updated_at':
+                    value = datetime.strptime(value, '%Y-%m-%dT%H:%M:%S.%f')
                 if key != '__class__':
-                    if key is 'created_at' or key is 'updated_at':
-                        value = datetime.strptime(
-                            value, '%Y-%m-%dT%H:%M:%S.%f')
                     setattr(self, key, value)
+        else:
+            self.id = str(uuid4())
+            self.created_at = datetime.now()
+            self.updated_at = datetime.now()
+            models.storage.new(self)
 
     def __str__(self):
-        """ Instances methods
-        Returns:
-            class name
-            id
-            dictionary
-        """
-        return "[{}] ({}) {}".format(self.__class__.__name__,
-                                     self.id, self.__dict__)
+        """ Returns the string representation of class name, id and dict """
+        class_name = str("[" + self.__class__.__name__ + "]")
+        instance_id = str("(" + self.id + ")")
+        instance_dict = str(self.__dict__)
+        return (class_name + " " + instance_id + " " + instance_dict)
 
     def save(self):
-        """" Save: save time update of date created an id """
+        """
+        Updates the public instance attribute updated_at
+        with the current datetime
+        """
         self.updated_at = datetime.now()
+        models.storage.save()
 
     def to_dict(self):
-        """ to_dict: contein whole intances of class
-        Returns:
-            dict_to
-        """
-        dict_to = dict(self.__dict__.items())
-        dict_to.update({'__class__': self.__class__.__name__})
-        dict_to.update({'created_at': self.created_at.isoformat()})
-        dict_to.update({'updated_at': self.updated_at.isoformat()})
-        return dict_to
+        """ Returns a dictionary containing all key/values of instance """
+        dict_str = self.__dict__.copy()
+        dict_str['__class__'] = self.__class__.__name__
+        dict_str['created_at'] = self.created_at.isoformat()
+        dict_str['updated_at'] = self.updated_at.isoformat()
 
-    @staticmethod
-    def to_json_string(list_dictionaries):
-        """ to json string """
-        if list_dictionaries:
-            return json.dumps(list_dictionaries)
-        else:
-            return "[]"
-
-    @classmethod
-    def save_to_file(cls, list_objs):
-        """ save to file """
-        objs = []
-        if list_objs:
-            for obj in list_objs:
-                objs.append(obj.to_dict())
-            with open(cls.__name__ + ".json", "w+") as f:
-                f.write(
-                    cls.to_json_string(objs))
-            f.close()
-        else:
-            with open(cls.__name__ + ".json", "w+") as f:
-                f.write(
-                    cls.to_json_string(objs))
-                f.close()
+        return (dict_str)
