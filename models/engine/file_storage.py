@@ -10,7 +10,9 @@ from ..amenity import Amenity
 from ..place import Place
 from ..review import Review
 
-
+classes = {'BaseModel': BaseModel, 'User': User, 'Place': Place,
+           'State': State, 'City': City, 'Amenity': Amenity,
+           'Review': Review}
 
 
 class FileStorage:
@@ -20,9 +22,6 @@ class FileStorage:
     """
     __file_path = 'file.json'
     __objects = {}
-    classes = {'BaseModel': BaseModel, 'User': User, 'Place': Place,
-               'State': State, 'City': City, 'Amenity': Amenity,
-               'Review': Review}
 
     def all(self):
         """ Returns __objects dictionary """
@@ -36,22 +35,18 @@ class FileStorage:
     def save(self):
         """ Serializes __objects to the JSON file """
         obj_dict = {}
-        for key, value in FileStorage.__objects.items():
+        for key, value in self.__objects.items():
             obj_dict[key] = value.to_dict()
-        with open(FileStorage.__file_path, 'w', encoding='utf-8') as my_file:
+        with open(self.__file_path, 'w', encoding='utf-8') as my_file:
             json.dump(obj_dict, my_file)
 
     def reload(self):
         """ Deserializes the JSON file if file exists """
-        try:
-            with open(FileStorage.__file_path, encoding='utf-8') as my_file:
-                str_dict = json.load(my_file)
-                for element in str_dict.values():
-                    class_name = element['__class__']
-                    del element['__class__']
-                    self.new(eval(class_name)(**element))
-        except Exception:
-            pass
+        if path.exists(self.__file_path) is True:
+            with open(self.__file_path, encoding='utf-8') as my_file:
+                tmp_objs = json.load(my_file)
+                for key, value in tmp_objs.items():
+                    self.new(classes[value['__class__']](**value))
 
     def delete(self, classes, Id):
         """ Delete object """
