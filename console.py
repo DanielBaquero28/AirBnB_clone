@@ -2,9 +2,14 @@
 """ Imports """
 import cmd
 import json
+<<<<<<< HEAD
 from models.base_model import BaseModel
 from models.engine.file_storage import FileStorage
 from models import storage
+=======
+
+from models.base_model import BaseModel
+>>>>>>> 2c4626de3bdb00eaf6e1f208ca258bb8b3f38a16
 from models.user import User
 from models.state import State
 from models.city import City
@@ -31,6 +36,7 @@ class HBNBCommand(cmd.Cmd):
         else:
             print("** class doesn't exist **")
 
+<<<<<<< HEAD
     def do_destroy(self, line):
         """Deletes an instance"""
         if line:
@@ -51,6 +57,16 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
 
     def do_update(self, name):
+=======
+    def do_destroy(self, name):
+        """Deletes an instance"""
+        if name:
+            pass
+        else:
+            print("** class name missing **")
+
+    def do_update(selfi, name):
+>>>>>>> 2c4626de3bdb00eaf6e1f208ca258bb8b3f38a16
         """Update a instance based on the class name"""
         if name:
             pass
@@ -59,6 +75,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_all(self, name):
         """Prints all instances"""
+<<<<<<< HEAD
         objs = storage.all()
         if name in HBNBCommand.classes or name == "":
             print(objs[obj])
@@ -81,6 +98,17 @@ class HBNBCommand(cmd.Cmd):
                         print("** no instance found **")
             else:
                 print("** class doesn't exist **")
+=======
+        if name:
+            pass
+        else:
+            print("** class doesn't exist **")
+
+    def do_show(self, name):
+        """Prints a instance based on the class name"""
+        if name:
+            pass
+>>>>>>> 2c4626de3bdb00eaf6e1f208ca258bb8b3f38a16
         else:
             print("** class name missing **")
 
