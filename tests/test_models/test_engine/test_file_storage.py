@@ -6,10 +6,15 @@ import unittest
 from datetime import datetime
 from os import remove
 from models.state import State
+from models import storage
 
 
 class TestFileStorage(unittest.TestCase):
     """ Test class. A testcase is created by subclassing unittest.TestCase. """
+    def test_Storage_Instance(self):
+        """ Testing if storage is an instance of FileStorage """
+        self.assertIsInstance(storage, FileStorage)
+
     def test_docstring(self):
         """ Testing if docstring are correct """
         self.assertIsNotNone(FileStorage.__init__.__doc__)
@@ -58,6 +63,35 @@ class TestFileStorage(unittest.TestCase):
             read_lines2 = my_file2.readlines()
 
         self.assertEqual(read_lines, read_lines2)
+
+    def test_save_method_2(self):
+        """ Testing if the save method works completely """
+        my_model = BaseModel()
+        my_model.name = "Holberton"
+        my_model.save()
+
+        dict_objs = my_model.to_dict()
+        objects = storage.all()
+
+        key = dict_objs['__class__'] + '.' + dict_objs['id']
+        self.assertEqual(key in objects, True)
+        self.assertEqual(my_model.name, dict_objs['name'])
+
+        temp_create1 = dict_objs['created_at']
+        temp_update1 = dict_objs['updated_at']
+
+        my_model.name = "School"
+        my_model.save()
+        dict_objs = my_model.to_dict()
+        objects = storage.all()
+        self.assertEqual(key in objects, True)
+        self.assertEqual(my_model.name, dict_objs['name'])
+
+        temp_create2 = dict_objs['created_at']
+        temp_update2 = dict_objs['updated_at']
+
+        self.assertEqual(temp_create1, temp_create2)
+        self.assertNotEqual(temp_update1, temp_update2)
 
 if __name__ == '__main__':
     unittest.main()
