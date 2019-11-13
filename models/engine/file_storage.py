@@ -10,9 +10,6 @@ from ..amenity import Amenity
 from ..place import Place
 from ..review import Review
 
-classes = {'BaseModel': BaseModel, 'User': User, 'Place': Place,
-           'State': State, 'City': City, 'Amenity': Amenity,
-           'Review': Review}
 
 
 class FileStorage:
@@ -22,6 +19,11 @@ class FileStorage:
     """
     __file_path = 'file.json'
     __objects = {}
+
+    classes = {'BaseModel': BaseModel, 'User': User, 'Place': Place,
+               'State': State, 'City': City, 'Amenity': Amenity,
+               'Review': Review}
+
 
     def all(self):
         """ Returns __objects dictionary """
