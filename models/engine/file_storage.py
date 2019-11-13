@@ -11,8 +11,6 @@ from ..place import Place
 from ..review import Review
 
 
-
-
 class FileStorage:
     """
     Serializes instances to a JSON files and deserializes
