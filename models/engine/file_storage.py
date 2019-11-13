@@ -3,13 +3,25 @@
 import json
 from models.base_model import BaseModel
 from os import path
+<<<<<<< HEAD
 from ..user import User
 from ..state import State
 from ..city import City
 from ..amenity import Amenity
 from ..place import Place
 from ..review import Review
+=======
+from models.user import User
+from models.place import Place
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.review import Review
+>>>>>>> 80e25cab0c4758f606430f345365feb16d6e628a
 
+classes = {'BaseModel': BaseModel, 'User': User, 'Place': Place,
+           'State': State, 'City': City, 'Amenity': Amenity,
+           'Review': Review}
 
 class FileStorage:
     """
