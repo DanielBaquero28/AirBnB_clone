@@ -53,7 +53,7 @@ class TestPlace(unittest.TestCase):
         self.assertEqual(type(my_model.city_id), str)
         self.assertEqual(type(my_model.user_id), str)
         self.assertEqual(type(my_model.name), str)
-        self.assertEqual(type(my_model.description), datetime)
+        self.assertEqual(type(my_model.description), str)
         self.assertEqual(type(my_model.number_rooms), int)
         self.assertEqual(type(my_model.number_bathrooms), int)
         self.assertEqual(type(my_model.max_guest), int)

@@ -11,8 +11,8 @@ class TestAmenity(unittest.TestCase):
     def test_class(self):
         """ Testing if class exists. """
         my_model = Amenity()
-
-        self.assertEqual(str(type(my_model)), "<class 'models.amenity.Amenity'>")
+        help = "<class 'models.amenity.Amenity'>"
+        self.assertEqual(str(type(my_model)), help)
 
     def test_docstring(self):
         """ Testing if docstring is correct """
