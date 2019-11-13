@@ -1,9 +1,0 @@
-# Ignoring iterated files saved by buffer
-*~
-# Ignoring test files
-test_base_model_dict.py
-test_save_reload_base_model.py
-# Ignoring __pycache__
-__pycache__
-# Ignoring sample json files
-file.json
