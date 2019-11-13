@@ -52,3 +52,9 @@ class FileStorage:
                     self.new(eval(class_name)(**element))
         except Exception:
             pass
+
+    def delete(self, classes, Id):
+        """ Delete object """
+        obj = "{} {}".format(classes, Id)
+        FileStore.__objects.pop(obj)
+        self.save()

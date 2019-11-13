@@ -61,7 +61,7 @@ class HBNBCommand(cmd.Cmd):
                     print("** instance id missing **")
                 else:
                     all_objs = storage.all()
-                    __obj = "{}.{}".format(args[0],args[1])
+                    __obj = "{}.{}".format(args[0], args[1])
                     if __obj in all_objs.keys():
                         for obj_id in all_objs.keys():
                             obj = all_objs[obj_id]
