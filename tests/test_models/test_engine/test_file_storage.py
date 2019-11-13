@@ -5,6 +5,7 @@ from models.engine.file_storage import FileStorage
 import unittest
 from datetime import datetime
 from os import remove
+from models.state import State
 
 
 class TestFileStorage(unittest.TestCase):
