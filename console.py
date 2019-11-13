@@ -59,8 +59,9 @@ class HBNBCommand(cmd.Cmd):
 
     def do_all(self, name):
         """Prints all instances"""
-        if name:
-            pass
+        if name in HBNBCommand.classes or name == "":
+            objs = storage.all()
+            print(objs)
         else:
             print("** class doesn't exist **")
 
