@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" Imports """
+"""Imports"""
 import cmd
 import json
 from models.base_model import BaseModel
@@ -14,7 +14,8 @@ from models.review import Review
 
 
 class HBNBCommand(cmd.Cmd):
-    """ Class HBNBCommand """
+    """Class HBNBCommand
+    """
     prompt = "(hbnb) "
     classes = {"BaseModel": BaseModel, "User": User, "State": State,
                "City": City, "Amenity": Amenity, "Place": Place,
@@ -32,7 +33,8 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
 
     def do_destroy(self, line):
-        """Deletes an instance"""
+        """Deletes an instance
+        """
         if line:
             args = line.split(' ')
             if args[0] in HBNBCommand.classes:
@@ -50,23 +52,52 @@ class HBNBCommand(cmd.Cmd):
         else:
             print("** class name missing **")
 
-    def do_update(self, name):
-        """Update a instance based on the class name"""
-        if name:
-            pass
+    def do_update(self, line):
+        """Update a instance based on the class name
+        """
+        if line:
+            args = line.split(' ')
+            if len(args) == 1:
+                print("** instance id missing **")
+            elif len(args) == 2:
+                print("** attribute name missing **")
+            elif len(args) == 3:
+                print("** value missing **")
+            elif args[0] in HBNBCommand.classes:
+                objs = storage.all()
+                obj = "{}.{}".format(args[0], args[1])
+                if obj in objs.keys():
+                    label = getattr(objs[obj], args[2], "")
+                    setattr(objs[obj], args[2], type(label)(args[3]))
+                    objs[obj].save()
+                else:
+                    print("** no instance found **")
+            else:
+                print("** class doesn't exist **")
         else:
-            print("** class doesn't exist **")
+            print("** class name missing **")
 
     def do_all(self, name):
-        """Prints all instances"""
-        if name in HBNBCommand.classes or name == "":
-            objs = storage.all()
-            print(objs)
+        """Prints all instances
+        """
+        list_objs = []
+        all_objs = list(storage.all().values())
+        if name == "":
+            for objs in all_objs:
+                list_objs.append(str(objs))
+            print(list_objs)
+        elif name in HBNBCommand.classes:
+            for objs in all_objs:
+                if HBNBCommand.classes.get(name) is type(objs):
+                    list_objs.append(str(objs))
+            print(list_objs)
+
         else:
             print("** class doesn't exist **")
 
     def do_show(self, line):
-        """Prints a instance based on the class name"""
+        """Prints a instance based on the class name
+        """
         if line:
             args = line.split(' ')
             if args[0] in HBNBCommand.classes:
