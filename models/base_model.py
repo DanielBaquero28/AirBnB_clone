@@ -16,7 +16,7 @@ class BaseModel:
                         setattr(self, key, datetime.strptime(
                             value, '%Y-%m-%dT%H:%M:%S.%f'))
                     else:
-                         setattr(self, key, value)
+                        setattr(self, key, value)
         else:
             self.id = str(uuid4())
             self.created_at = datetime.now()
