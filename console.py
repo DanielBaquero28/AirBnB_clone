@@ -91,6 +91,7 @@ class HBNBCommand(cmd.Cmd):
                 if HBNBCommand.classes.get(name) is type(objs):
                     list_objs.append(str(objs))
             print(list_objs)
+
         else:
             print("** class doesn't exist **")
 

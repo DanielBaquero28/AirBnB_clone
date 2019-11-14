@@ -9,12 +9,14 @@ class BaseModel:
     """ SuperClass from which the rest of the classes will inherit """
     def __init__(self, *args, **kwargs):
         """ Constructor method """
-        if kwargs:
+        if kwargs is not None and len(kwargs) != 0:
             for key, value in kwargs.items():
-                if key == 'created_at' or key == 'updated_at':
-                    value = datetime.strptime(value, '%Y-%m-%dT%H:%M:%S.%f')
                 if key != '__class__':
-                    setattr(self, key, value)
+                    if key == 'created_at' or key == 'updated_at':
+                        setattr(self, key, datetime.strptime(
+                            value, '%Y-%m-%dT%H:%M:%S.%f'))
+                    else:
+                        setattr(self, key, value)
         else:
             self.id = str(uuid4())
             self.created_at = datetime.now()
@@ -38,9 +40,17 @@ class BaseModel:
 
     def to_dict(self):
         """ Returns a dictionary containing all key/values of instance """
-        dict_str = self.__dict__.copy()
-        dict_str['__class__'] = self.__class__.__name__
-        dict_str['created_at'] = self.created_at.isoformat()
-        dict_str['updated_at'] = self.updated_at.isoformat()
+        dict_objs = {}
+        tmp_var = self.__dict__
 
-        return (dict_str)
+        for key, values in tmp_var.items():
+            if key == 'created_at' or key == 'updated_at':
+                dict_objs[key] = values.strftime('%Y-%m-%dT%H:%M:%S.%f')
+            else:
+                if not values:
+                    pass
+                else:
+                    dict_objs[key] = values
+        dict_objs['__class__'] = self.__class__.__name__
+
+        return (dict_objs)
