@@ -62,11 +62,11 @@
 <h2>Examples</h2>
 <p>The following are some examples of the console:</p>
 <h3>Create</h3>
-<p style="background-color:A7A4A4;"><code>(hbnb) create BaseModel
+<p style="background-color:A7A4A4;"><code>(hbnb) create BaseModel</code>
 <br>
-2386ef96-9d7f-4914-8885-4076afdf9e84
+<code>2386ef96-9d7f-4914-8885-4076afdf9e84</code>
 <br>
-(hbnb)</code>
+<code>(hbnb)</code>
 </p>
 <br>
 <h3>Show</h3>
