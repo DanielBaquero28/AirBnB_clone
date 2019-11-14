@@ -62,47 +62,47 @@
 <h2>Examples</h2>
 <p>The following are some examples of the console:</p>
 <h3>Create</h3>
-<p style="background-color:A7A4A4;"><code>(hbnb) create BaseModel
+<p style="background-color:A7A4A4;"><code>(hbnb) create BaseModel</code>
 <br>
-2386ef96-9d7f-4914-8885-4076afdf9e84
+<code>2386ef96-9d7f-4914-8885-4076afdf9e84</code>
 <br>
-(hbnb)</code>
+<code>(hbnb)</code>
 </p>
 <br>
 <h3>Show</h3>
-<p style="background-color:A7A4A4;"><code>(hbnb) show BaseModel 2386ef96-9d7f-4914-8885-4076afdf9e84
+<p style="background-color:A7A4A4;"><code>(hbnb) show BaseModel 2386ef96-9d7f-4914-8885-4076afdf9e84</code>
 <br>
-[BaseModel] (2386ef96-9d7f-4914-8885-4076afdf9e84) {'id': '2386ef96-9d7f-4914-8885-4076afdf9e84', 'updated_at': datetime.datetime(2019, 11, 13, 23, 48, 10, 468818), 'created_at': datetime.datetime(2019, 11, 13, 23, 48, 10, 468774)}
+<code>[BaseModel] (2386ef96-9d7f-4914-8885-4076afdf9e84) {'id': '2386ef96-9d7f-4914-8885-4076afdf9e84', 'updated_at': datetime.datetime(2019, 11, 13, 23, 48, 10, 468818), 'created_at': datetime.datetime(2019, 11, 13, 23, 48, 10, 468774)}</code>
 <br>
-(hbnb)</code>
+<code>(hbnb)</code>
 </p>
 <br>
 <h3>Update</h3>
-<p style="background-color:A7A4A4;"><code>(hbnb) update BaseModel 2386ef96-9d7f-4914-8885-4076afdf9e84 user Daniel
+<p style="background-color:A7A4A4;"><code>(hbnb) update BaseModel 2386ef96-9d7f-4914-8885-4076afdf9e84 user Daniel</code>
 <br>
-(hbnb) show BaseModel 2386ef96-9d7f-4914-8885-4076afdf9e84
+<code>(hbnb) show BaseModel 2386ef96-9d7f-4914-8885-4076afdf9e84</code>
 <br>
-[BaseModel] (2386ef96-9d7f-4914-8885-4076afdf9e84) {'id': '2386ef96-9d7f-4914-8885-4076afdf9e84', 'updated_at': datetime.datetime(2019, 11, 13, 23, 48, 10, 468818), 'created_at': datetime.datetime(2019, 11, 13, 23, 48, 10, 468774)}
+<code>[BaseModel] (2386ef96-9d7f-4914-8885-4076afdf9e84) {'id': '2386ef96-9d7f-4914-8885-4076afdf9e84', 'updated_at': datetime.datetime(2019, 11, 13, 23, 48, 10, 468818), 'created_at': datetime.datetime(2019, 11, 13, 23, 48, 10, 468774)}</code>
 <br>
-(hbnb)</code>
+<code>(hbnb)</code>
 </p>
 <br>
 <h3>Destroy</h3>
-<p style="background-color:A7A4A4;"><code>(hbnb) destroy BaseModel 2386ef96-9d7f-4914-8885-4076afdf9e84
+<p style="background-color:A7A4A4;"><code>(hbnb) destroy BaseModel 2386ef96-9d7f-4914-8885-4076afdf9e84</code>
 <br>
-(hbnb) show BaseModel 2386ef96-9d7f-4914-8885-4076afdf9e84
+<code>(hbnb) show BaseModel 2386ef96-9d7f-4914-8885-4076afdf9e84</code>
 <br>
-** no instance found **
+<code>** no instance found **</code>
 <br>
-(hbnb)</code>
+<code>(hbnb)</code>
 </p>
 <br>
 <h3>All</h3>
-<p style="background-color:A7A4A4;"><code>(hbnb) all
+<p style="background-color:A7A4A4;"><code>(hbnb) all</code>
 <br>
-{'BaseModel.c94db76d-a8bf-4a73-b8d0-7272900863a1': <models.base_model.BaseModel object at 0x7f4d49d42198>, 'BaseModel.22e40cd7-1a74-4f22-87df-cfcc219c3a28': <models.base_model.BaseModel object at 0x7f4d49128e48>, 'BaseModel.3d3da26f-4fba-41e4-bd04-4d4d92d8fd86': <models.base_model.BaseModel object at 0x7f4d49128f98>, 'BaseModel.97cfbdc7-82cf-4739-8a9f-bc1c47b5cfe2': <models.base_model.BaseModel object at 0x7f4d49d42320>, 'State.4143fd08-2ab9-4d46-8a79-b76a412ee3e1': <models.state.State object at 0x7f4d49d422e8>, 'BaseModel.651c43d2-755f-47ef-aed4-c68386b87a44': <models.base_model.BaseModel object at 0x7f4d49128eb8>, 'BaseModel.535809cb-4f9f-46b9-9ca0-21829bd2b423': <models.base_model.BaseModel object at 0x7f4d49128ef0>, 'BaseModel.134f0950-4a69-4225-9787-14cc1176533c': <models.base_model.BaseModel object at 0x7f4d49128e80>, 'BaseModel.8d8fc58d-811f-408e-b633-fc07105c09eb': <models.base_model.BaseModel object at 0x7f4d49128f60>, 'BaseModel.22f749e1-4cb2-4de8-b828-3f426c1fb5cd': <models.base_model.BaseModel object at 0x7f4d49d42358>, 'BaseModel.d12005fc-5325-4aab-a2d1-8a717ae5c0cf': <models.base_model.BaseModel object at 0x7f4d490fe320>, 'State.184d8a5b-d4d7-4f9e-8579-0e906b119700': <models.state.State object at 0x7f4d49d42240>, 'BaseModel.48d455da-2c90-4195-b9e4-be9ff061d029': <models.base_model.BaseModel object at 0x7f4d49128f28>}
+<code>{'BaseModel.c94db76d-a8bf-4a73-b8d0-7272900863a1': <models.base_model.BaseModel object at 0x7f4d49d42198>, 'BaseModel.22e40cd7-1a74-4f22-87df-cfcc219c3a28': <models.base_model.BaseModel object at 0x7f4d49128e48>, 'BaseModel.3d3da26f-4fba-41e4-bd04-4d4d92d8fd86': <models.base_model.BaseModel object at 0x7f4d49128f98>, 'BaseModel.97cfbdc7-82cf-4739-8a9f-bc1c47b5cfe2': <models.base_model.BaseModel object at 0x7f4d49d42320>, 'State.4143fd08-2ab9-4d46-8a79-b76a412ee3e1': <models.state.State object at 0x7f4d49d422e8>, 'BaseModel.651c43d2-755f-47ef-aed4-c68386b87a44': <models.base_model.BaseModel object at 0x7f4d49128eb8>, 'BaseModel.535809cb-4f9f-46b9-9ca0-21829bd2b423': <models.base_model.BaseModel object at 0x7f4d49128ef0>, 'BaseModel.134f0950-4a69-4225-9787-14cc1176533c': <models.base_model.BaseModel object at 0x7f4d49128e80>, 'BaseModel.8d8fc58d-811f-408e-b633-fc07105c09eb': <models.base_model.BaseModel object at 0x7f4d49128f60>, 'BaseModel.22f749e1-4cb2-4de8-b828-3f426c1fb5cd': <models.base_model.BaseModel object at 0x7f4d49d42358>, 'BaseModel.d12005fc-5325-4aab-a2d1-8a717ae5c0cf': <models.base_model.BaseModel object at 0x7f4d490fe320>, 'State.184d8a5b-d4d7-4f9e-8579-0e906b119700': <models.state.State object at 0x7f4d49d42240>, 'BaseModel.48d455da-2c90-4195-b9e4-be9ff061d029': <models.base_model.BaseModel object at 0x7f4d49128f28>}</code>
 <br>
-(hbnb)</code>
+<code>(hbnb)</code>
 </p>
 <h2>Managing Classes</h2>
 <p>We will manage the following classes:</p>
