@@ -60,14 +60,14 @@ class TestBaseModel(unittest.TestCase):
         model_dict = my_model.to_dict()
         my_model.name = "School"
         my_model.save()
-        model_dict2 = my_model.to_dict()
+        model_dic2 = my_model.to_dict()
 
         self.assertNotEqual(my_model.created_at, my_model.updated_at)
-        self.assertEqual(model_dict['created_at'], model_dict2['created_at'])
-        self.assertNotEqual(model_dict['updated_at'], model_dict2['updated_at'])
+        self.assertEqual(model_dict['created_at'], model_dic2['created_at'])
+        self.assertNotEqual(model_dict['updated_at'], model_dic2['updated_at'])
         self.assertEqual(my_model.__class__.__name__, model_dict['__class__'])
         self.assertEqual(my_model.id, model_dict['id'])
-        self.assertEqual(my_model.name, model_dict2['name'])
+        self.assertEqual(my_model.name, model_dic2['name'])
         self.assertEqual(my_model.my_number, model_dict['my_number'])
 
     def test_to_dict_type(self):
